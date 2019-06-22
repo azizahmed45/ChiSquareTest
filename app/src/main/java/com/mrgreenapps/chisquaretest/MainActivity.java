@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText expectedValueField;
 
     private Button calculateButton;
-    private Button submitButton;
+    private Button addButton;
 
     private ListView valueListView;
     private ValueListAdapter valueListAdapter;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -161,21 +161,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        observedValueField = findViewById(R.id.observed_value);
-        expectedValueField = findViewById(R.id.expected_value);
+        observedValueField = findViewById(R.id.observed_value_field);
+        expectedValueField = findViewById(R.id.expected_value_field);
 
-        calculateButton = findViewById(R.id.calculate);
-        submitButton = findViewById(R.id.submit);
+        calculateButton = findViewById(R.id.calculate_button);
+        addButton = findViewById(R.id.add_button);
 
         valueListView = findViewById(R.id.value_list);
+        //listview header
+        View headerView = View.inflate(this, R.layout.list_view_header, null);
+        valueListView.addHeaderView(headerView);
+
         valueListAdapter = new ValueListAdapter(this);
         valueListView.setAdapter(valueListAdapter);
 
-        clearButton = findViewById(R.id.clear);
+        clearButton = findViewById(R.id.clear_button);
 
-        chiSquareValueField = findViewById(R.id.chi_square);
-        chiSquareWithConditionValueField = findViewById(R.id.chi_square_with_condition);
+        chiSquareValueField = findViewById(R.id.chi_square_field);
+        chiSquareWithConditionValueField = findViewById(R.id.sig_chi_square_field);
 
-        checkButton = findViewById(R.id.check);
+        checkButton = findViewById(R.id.check_button);
     }
 }

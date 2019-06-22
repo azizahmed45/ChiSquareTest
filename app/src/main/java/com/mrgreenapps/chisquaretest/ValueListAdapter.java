@@ -49,8 +49,8 @@ public class ValueListAdapter extends BaseAdapter {
         View view = LayoutInflater.from(context).inflate(R.layout.list_value_single_value, parent, false);
 
         TextView serialField = view.findViewById(R.id.serial);
-        TextView observedValueField = view.findViewById(R.id.observed_value);
-        TextView expectedValueField = view.findViewById(R.id.expected_value);
+        TextView observedValueField = view.findViewById(R.id.observed_value_field);
+        TextView expectedValueField = view.findViewById(R.id.expected_value_field);
 
         serialField.setText(String.valueOf(position + 1));
         observedValueField.setText(String.valueOf(observedValueList.get(position)));

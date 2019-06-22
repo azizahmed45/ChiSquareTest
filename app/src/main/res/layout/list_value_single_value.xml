@@ -11,13 +11,13 @@
         android:layout_weight="0.3" />
 
     <TextView
-        android:id="@+id/observed_value"
+        android:id="@+id/observed_value_field"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/expected_value"
+        android:id="@+id/expected_value_field"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
