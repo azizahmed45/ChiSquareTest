@@ -11,6 +11,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Double> observedValueList = new ArrayList<>();
     private List<Double> expectedValueList = new ArrayList<>();
 
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
+
+        initAdmob();
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,5 +191,31 @@ public class MainActivity extends AppCompatActivity {
         chiSquareWithConditionValueField = findViewById(R.id.sig_chi_square_field);
 
         checkButton = findViewById(R.id.check_button);
+    }
+
+    private void initAdmob(){
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+            @Override
+            public void onAdLoaded() {
+//                Toast.makeText(MainActivity.this, "Loaded", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+//                Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 }
